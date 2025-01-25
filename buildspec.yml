@@ -1,1 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies"
+      - yum update -y
+      - yum install -y python3 python3-pip zip
+  build:
+    commands:
+      - echo "Building psycopg2 layer"
+      - pip3 install psycopg2-binary --target python
+      - zip -r psycopg2-layer.zip python
+
+artifacts:
+  files:
+    - psycopg2-layer.zip
 
